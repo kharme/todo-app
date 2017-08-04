@@ -1,0 +1,18 @@
+<section class="todoapp">
+  <header class="header">
+    <h1 class="bg-primary">Список задач</h1>
+    <input class="new-todo" placeholder="Что нужно сделать?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+    <button class="btn btn-small btn-primary" (click)="addTodo()">Добавить</button>
+  </header>
+  <section class="main" *ngIf="todos.length > 0">
+    <ul class="todo-list">
+      <li *ngFor="let todo of todos" [class.completed]="todo.complete">
+        <div class="view">
+          <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+          <label>{{todo.title}}</label>
+          <button class="destroy" (click)="removeTodo(todo)">Удалить</button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</section>
